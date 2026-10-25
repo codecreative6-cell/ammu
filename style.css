@@ -1,0 +1,58 @@
+:root{
+  --oxblood:#4a0615; --velvet:#7d1230; --petal:#ffd6df; --paper:#fff3f5; --rose:#d81e4f; --mauve:#e8a7b8;
+  --arch:50% 50% 24px 24px / 37.5% 37.5% 24px 24px;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--serif);background:var(--oxblood);color:var(--petal);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+/* hero */
+.hero{display:grid;gap:56px;align-items:center;padding-top:64px;padding-bottom:72px}
+h1{font-size:clamp(5rem,26vw,12rem);font-style:italic;font-weight:700;line-height:.85;letter-spacing:-.03em}
+.lead{margin-top:28px;max-width:16em;font-size:clamp(1.35rem,3.6vw,1.9rem);font-style:italic;line-height:1.35;color:var(--mauve)}
+@media(min-width:820px){
+  .hero{grid-template-columns:1.15fr .85fr;padding-top:104px;padding-bottom:112px}
+  h1{font-size:clamp(6rem,14vw,11rem)}
+}
+
+/* arched photo frame (used for every photo) */
+.frame{position:relative;width:min(100%,360px);margin:0 auto}
+.frame::before{content:"";position:absolute;inset:0;transform:translate(16px,-16px);border-radius:var(--arch);background:var(--velvet)}
+.arch{position:relative;aspect-ratio:3/4;overflow:hidden;border:6px solid var(--petal);border-radius:var(--arch)}
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rose{position:absolute;z-index:2;line-height:1}
+.r1{right:-10px;bottom:24px;font-size:3.2rem;transform:rotate(16deg)}
+.r2{left:-16px;top:30%;font-size:2.2rem;transform:rotate(-18deg)}
+
+/* lyric sheet */
+.lyrics{background:var(--paper);color:var(--oxblood);text-align:center;padding:88px 0 96px}
+.verse{max-width:24em;margin:0 auto;font-size:clamp(1.35rem,3.6vw,2rem);font-style:italic;line-height:1.5}
+.orn{display:block;margin:34px 0;font-size:1.6rem;font-style:normal;line-height:1;color:var(--rose)}
+.thanks{font-size:clamp(1.9rem,5.6vw,3.2rem);font-style:italic;font-weight:700;line-height:1.15;color:var(--rose)}
+
+/* photos */
+.gallery{padding:96px 0 40px}
+.grid{display:grid;gap:36px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:620px}
+figcaption{margin-top:14px;text-align:center;font-style:italic;font-size:1.05rem;color:var(--mauve)}
+@media(min-width:520px){figure:nth-child(2){margin-top:44px}}
+
+/* closing */
+.end{text-align:center;padding-top:56px;padding-bottom:104px}
+.end h2{font-size:clamp(2.6rem,8vw,5rem);font-style:italic;font-weight:700;line-height:1.05}
+.end .line{margin-top:16px;font-size:1.25rem;font-style:italic;color:var(--mauve)}
+.end .sign{margin-top:30px;font-size:1.1rem;font-style:italic}
+
+/* roses in motion */
+.petals{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+.fall{position:absolute;top:0;line-height:1;will-change:transform;animation:drop 14s linear infinite backwards}
+.fall i{display:block;font-style:normal;animation:sway 4s ease-in-out infinite alternate}
+.petal{width:.7em;height:.9em;border-radius:80% 0 80% 0;opacity:.92}
+@keyframes drop{from{transform:translateY(-14vh)}to{transform:translateY(114vh)}}
+@keyframes sway{from{transform:translateX(-22px) rotate(-35deg)}to{transform:translateX(22px) rotate(45deg)}}
+.r1{--r:16deg}
+.r2{--r:-18deg}
+.rose{animation:bob 5s ease-in-out infinite alternate}
+.r2{animation-delay:-2.5s}
+@keyframes bob{from{transform:rotate(calc(var(--r) - 8deg)) translateY(0)}to{transform:rotate(calc(var(--r) + 8deg)) translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){.rose{animation:none}.petals{display:none}}
