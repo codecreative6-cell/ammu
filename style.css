@@ -56,3 +56,27 @@ figcaption{margin-top:14px;text-align:center;font-style:italic;font-size:1.05rem
 .r2{animation-delay:-2.5s}
 @keyframes bob{from{transform:rotate(calc(var(--r) - 8deg)) translateY(0)}to{transform:rotate(calc(var(--r) + 8deg)) translateY(-10px)}}
 @media(prefers-reduced-motion:reduce){.rose{animation:none}.petals{display:none}}
+
+/* ---------- mobile ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.wrap{padding-left:max(22px,env(safe-area-inset-left));padding-right:max(22px,env(safe-area-inset-right))}
+.lead,.thanks,.end h2,.end .line,.ln{text-wrap:balance}
+.ln{display:block}
+.end{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+
+@media(max-width:819px){
+  .hero{gap:36px;padding-top:40px;padding-bottom:56px;text-align:center}
+  h1{font-size:clamp(5.5rem,30vw,12rem)}
+  .lead{margin:20px auto 0}
+  .frame{width:min(88%,340px)}
+  .lyrics{padding:64px 0 72px}
+  .verse{font-size:clamp(1.2rem,4.6vw,1.9rem)}
+  .orn{margin:26px 0}
+  .gallery{padding:64px 0 24px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .grid .arch{border-width:4px}
+  figure:nth-child(2){margin-top:32px}
+  figcaption{font-size:.95rem}
+  .end{padding-top:40px;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .end h2{font-size:clamp(2rem,8.6vw,5rem)}
+}
